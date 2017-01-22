@@ -44,6 +44,7 @@ proc print noobs data=SHOT_analytic_file_temp(obs=1)
 	var Shooting_Cnt;
 run;
 
+*
 Research Question 3:  What is average SHOT_CLOCK, DRIBBLES, TOUCH_TIME, SHOT_DIST for players?
 ;
 
