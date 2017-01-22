@@ -24,8 +24,25 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 
 *
 Research Question 1: Which player takes the most dribbles before shooting?
+;
 
+
+*
 Research Question 2:  Which player takes the most open shots? (largest average Clos_def_dist)
+;
+data SHOT_shooting_cnt;
+	set SHOT_analytic_file;
+	Shooting_Cnt
+run;
+
+proc sort data=SHOT_analytic_file_temp
+    by descending Shooting_Cnt
+run;
+	
+proc print noobs data=SHOT_analytic_file_temp(obs=1)
+    id player_name;
+	var Shooting_Cnt;
+run;
 
 Research Question 3:  What is average SHOT_CLOCK, DRIBBLES, TOUCH_TIME, SHOT_DIST for players?
 ;
