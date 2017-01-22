@@ -24,10 +24,16 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 %include '.\STAT6250-01_w17-team-7_project1_data_preparation.sas';
 *
 Research question 1: What is the average time between shots for each player?
+Rationale:It'd be interesting to see what is the avarage time between shots for each player. 
+Methodology: take the avarage betwee SHOT_CLOCK for each player. 
 ;
 *
-Research question 2: What is the average shorts per game for each player?
+Research question 2: What is the average shots per game for each player?
+Rationale:
+Methodology: Take the sum of shots to each player
 ;
 *
-Research question 3: What is the average dribbles per player, per game?
+Research question 3: What is the average shot dribbles per player, per game?
+Rationale:
+Methodology: take the avarage of dribbles for each player. 
 ;
