@@ -21,7 +21,7 @@ are easy to understand).
 
 * setup environmental parameters;
 %let inputDatasetURL = 
-https://github.com/stat6250/team-7_project1/blob/master/shot_logs.csv
+https://github.com/stat6250/team-7_project1/blob/master/shot_logs.csv?raw=true
 ;
 
 * load raw SHOTLOG dataset over the web;
@@ -35,7 +35,7 @@ run;
 
 proc import
 	file=SHOTtemp
-	out=SHOT_raw
+	out=SHOT_raw replace
 	dbms=csv
 	;
 run;
