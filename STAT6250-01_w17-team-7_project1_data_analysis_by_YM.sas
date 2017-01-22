@@ -30,6 +30,7 @@ Research Question 1: Which player takes the most dribbles before shooting?
 *
 Research Question 2:  Which player takes the most open shots? (largest average Clos_def_dist)
 ;
+
 data SHOT_shooting_cnt;
 	set SHOT_analytic_file;
 	Shooting_Cnt
