@@ -53,24 +53,24 @@ corresponding data-analysis files;
 
 data SHOT_analytic_file;
 	retain
-		DRIBBLES
 		SHOT_CLOCK
+		DRIBBLES
 		TOUCH_TIME
 		SHOT_DIST
-		CLOSE_DEF_DIST
-		player_name
 		CLOSEST_DEFENDER
-		SHOT_RESULT
+		CLOSE_DEF_DIST
+		FGM
+		player_name
 	;
 	keep
-		DRIBBLES
 		SHOT_CLOCK
+		DRIBBLES
 		TOUCH_TIME
 		SHOT_DIST
-		CLOSE_DEF_DIST
-		player_name
 		CLOSEST_DEFENDER
-		SHOT_RESULT
+		CLOSE_DEF_DIST
+		FGM
+		player_name
 	;
 	set SHOT_raw;
 run;
