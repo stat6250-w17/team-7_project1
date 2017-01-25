@@ -23,30 +23,33 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 %include '.\STAT6250-01_w17-team-7_project1_data_preparation.sas';
 
 *
-Research Question 1: Which player takes the most dribbles before shooting?
+Research Question 1: Which player takes the most dribbles before making a shot?
+
+Rationale: would like to see which player holds the ball longest and makes successful
+shots.
+
+Methodolgy: Sort all successful shots by dribbles, take average, descending and select the top
+player.
 ;
 
 
 *
-Research Question 2:  Which player takes the most open shots? (largest average Clos_def_dist)
+Research Question 2:  Who makes most baskets in NBA?
+
+Rationale: Who is the most valuable player with most made shots in NBA.
+
+Methodology: Select 'made' shots, run MEANs by players and select the Maximum.
 ;
 
-data SHOT_shooting_cnt;
-	set SHOT_analytic_file;
-	Shooting_Cnt
-run;
 
-proc sort data=SHOT_analytic_file_temp
-    by descending Shooting_Cnt
-run;
-	
-proc print noobs data=SHOT_analytic_file_temp(obs=1)
-    id player_name;
-	var Shooting_Cnt;
-run;
 
 *
-Research Question 3:  What is average SHOT_CLOCK, DRIBBLES, TOUCH_TIME, SHOT_DIST for players?
+Research Question 3:  Which players shoots successful baskets from the farthest distance?
+
+Rationale: Who has the best accuracy in NBA.
+
+Methodolgy: Take average of shot_dist  of successful shots group by each player, sorted 
+descending by shot_dist. Pick the first observation.
 ;
 
 
