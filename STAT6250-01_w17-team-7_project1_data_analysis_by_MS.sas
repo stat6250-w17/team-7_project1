@@ -27,13 +27,60 @@ Research question 1: What is the average time between shots for each player?
 Rationale:It'd be interesting to see what is the avarage time between shots for each player. 
 Methodology: take the avarage betwee SHOT_CLOCK for each player. 
 ;
+proc means data=SHOT_analytic_file noprint;
+var GAME_CLOCK;
+class player_name;
+output out= avg_t_bwn_shots_for_each_player mean= avg_t;
+
+run;
+
+proc sort data=avg_t_bwn_shots_for_each_player;
+    by descending avg_t;
+run;
+  
+proc print noobs data=avg_t_bwn_shots_for_each_player(obs=1);
+    id player_name;
+    var avg_t;
+ run;
+ 
 *
 Research question 2: What is the average shots per game for each player?
-Rationale:
-Methodology: Take the sum of shots to each player
+Rationale:I'd like to review performance of a player based on their shots per game
+Methodology: Take the sum of shots of each player
 ;
+proc means data=SHOT_analytic_file noprint;
+var SHOT_RESULT;
+class player_name;
+output out= sum_of_shots_of_each_player mean= sum_s;
+
+run;
+
+proc sort data=sum_of_shots_of_each_player;
+    by descending sum_s;
+run;
+  
+proc print noobs data=sum_of_shots_of_each_player(obs=1);
+    id player_name;
+    var sum_s;
+ run;
 *
 Research question 3: What is the average shot dribbles per player, per game?
-Rationale:
+Rationale:I'd like to caculate the avarage dribbls before any shot per player, per game. 
 Methodology: take the avarage of dribbles for each player. 
 ;
+proc means data=SHOT_analytic_file noprint;
+var SHOT_RESULT;
+class player_name;
+output out= sum_of_shots_of_each_player mean= sum_s;
+
+run;
+
+proc sort data=sum_of_shots_of_each_player;
+    by descending sum_s;
+run;
+  
+proc print noobs data=sum_of_shots_of_each_player(obs=1);
+    id player_name;
+    var sum_s;
+ run;
+ *
