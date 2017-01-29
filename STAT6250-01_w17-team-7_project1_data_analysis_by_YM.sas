@@ -41,7 +41,6 @@ run;
 
 
 title1 'Research Question 2: Who are the top three leading scorers in NBA?'
-
 title2 'Rationale: Wanted to see who are the top scorers in NBA making them the most valuable players.'
 
 footnote1 'Ran on my local VM using proc sql, the code will be converted to SAS code soon.'
@@ -59,7 +58,6 @@ Methodolog: Sum points for all made shorts and group by players.
 
 
 title1 'Research Question 3:  Which player shoots successful baskets from the farthest distance?'
-
 title2 'Rationale: Wanted to analyze which player has best average for the farthest distance shots.'
 
 footnote1 'Mike Miller seems to be leading the farthest shot distance average(23.13ft), Steph Curry has an average of 15.5ft'
