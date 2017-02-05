@@ -1,5 +1,6 @@
 
 
+
 *******************************************************************************;
 **************** 80-character banner for column width reference ***************;
 * (set window width to banner width to calibrate line length to 80 characters *;
@@ -39,6 +40,10 @@ proc sql;
   order by avg_db desc;
 run;
 
+title;
+footnote;
+
+
 
 title1 'Research Question 2: Who are the top three leading scorers in NBA?';
 title2 'Rationale: Wanted to see who are the top scorers in NBA making them the most valuable players.';
@@ -55,7 +60,8 @@ proc sql;
   order by points desc;
 run;
 
-
+title;
+footnote;
 
 
 title1 'Research Question 3:  Which player shoots successful baskets from the farthest distance?';
@@ -74,6 +80,7 @@ proc sql;
   order by avg_shot_dist desc;
 run;
 
-
+title;
+footnote;
 
 
