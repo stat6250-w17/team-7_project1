@@ -24,53 +24,56 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 
 
 title1 'Research Question 1: Which player takes the most dribbles before making a shot?';
-title2 'Rationale: would like to see which player holds the ball longest and makes successful shots.'
-
-footnote1 'I ran the results using proc sql on my local VM, code will be converted to SAS code'
-footnote2 'Looks like Dennis Schrod dribbles the most based on averages before a making a shot'
+title2 'Rationale: would like to see which player holds the ball longest and makes successful shots.';
+footnote1 'I used proc sql in SAS to select playername and average of dribbles sorted in descending';
+footnote2 'The first observation in the result gives the top player for highest average dribbles';
 
 *
-Methodolgy: Take average dribbles for 'made' shots by each player.
+Methodolgy: Take average dribbles for 'made' shots by each player and sort by the average dribbles
+in descending order.
 ;
 
 proc sql;
-  select player_name, avg(dribbles) as avg_db from work.import
+  select player_name, avg(dribbles) as avg_db from SHOT_analytic_file
   where short_result='made' group by player_name
   order by avg_db desc;
 run;
 
 
-title1 'Research Question 2: Who are the top three leading scorers in NBA?'
-title2 'Rationale: Wanted to see who are the top scorers in NBA making them the most valuable players.'
+title1 'Research Question 2: Who are the top three leading scorers in NBA?';
+title2 'Rationale: Wanted to see who are the top scorers in NBA making them the most valuable players.';
+footnote1 'PROC SQL was used to sort the players with highest sum of points';
+footnote2 'The top three observations will give the top players.';
 
-footnote1 'Ran on my local VM using proc sql, the code will be converted to SAS code soon.'
-footnote2 'The top points scorers are Stephen Curry, James Harden and Klay Thompson. Lebron James is 4th.'
+*
+Methodolog: Sum points for all made shorts and group by players, sort by points in descending order.
+;
 
 proc sql;
-  select player_name, sum(pts) as points from work.import
+  select player_name, sum(pts) as points from SHOT_analytic_file
   where shot_result='made' group by player_name
   order by points desc;
 run;
 
+
+
+
+title1 'Research Question 3:  Which player shoots successful baskets from the farthest distance?';
+title2 'Rationale: Wanted to analyze which player has best average for the farthest distance shots.';
+footnote1 'Players were sorted in descending order by their averages of shot_distance';
+footnote2 'None of the famous players made the list so I am thinking this may not be a very interesting metric for this game';
+
 *
-Methodolog: Sum points for all made shorts and group by players.
+Methodology: Take average of shooting distance grouped by players for all successful shots and sort by avg shot 
+distance in descending order.
 ;
 
-
-title1 'Research Question 3:  Which player shoots successful baskets from the farthest distance?'
-title2 'Rationale: Wanted to analyze which player has best average for the farthest distance shots.'
-
-footnote1 'Mike Miller seems to be leading the farthest shot distance average(23.13ft), Steph Curry has an average of 15.5ft'
-footnote2 'Surprisingly, I did not see any famous players in the top list.'
-
 proc sql;
-  select player_name, avg(shot_dist) as avg_shot_dist from work.import
+  select player_name, avg(shot_dist) as avg_shot_dist from SHOT_analytic_file
   where shot_result='made' group by player_name
   order by avg_shot_dist desc;
 run;
 
-*
-Methodology: Take average of shooting distance grouped by players for all successful shots.
-;
+
 
 
