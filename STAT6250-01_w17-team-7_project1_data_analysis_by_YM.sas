@@ -1,6 +1,6 @@
-
-
-
+* IL: there's no need to start the file with blank lines;
+* IL: code currently doesn't work when downloaded from GH & run;
+* IL: please resolve & schedule a follow-up office-hours appt to further;
 *******************************************************************************;
 **************** 80-character banner for column width reference ***************;
 * (set window width to banner width to calibrate line length to 80 characters *;
@@ -16,7 +16,7 @@ See included file for dataset properties
 ;
 
 * environmental setup;
-
+* IL: typo below:;
 * set relative file import path to current directory (using standard SAS trick;
 X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPATH))-%length(%sysget(SAS_EXECFILENAME))))""";
 
@@ -29,15 +29,26 @@ title2 'Rationale: would like to see which player holds the ball longest and mak
 footnote1 'I used proc sql in SAS to select playername and average of dribbles sorted in descending';
 footnote2 'The first observation in the result gives the top player for highest average dribbles';
 
+* IL: please wrap comments at 80 characters;
 *
 Methodolgy: Take average dribbles for 'made' shots by each player and sort by the average dribbles
 in descending order.
 ;
 
+* consider using indentation to show code structure more explicitly:;
 proc sql;
-  select player_name, avg(dribbles) as avg_db from SHOT_analytic_file
-  where short_result='made' group by player_name
-  order by avg_db desc;
+    select
+         player_name
+        ,avg(dribbles) as avg_db
+    from
+        SHOT_analytic_file
+    where
+        short_result='made'
+    group by
+        player_name
+    order by
+        avg_db desc
+    ;
 run;
 
 title;
