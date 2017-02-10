@@ -1,6 +1,3 @@
-
-
-
 *******************************************************************************;
 **************** 80-character banner for column width reference ***************;
 * (set window width to banner width to calibrate line length to 80 characters *;
@@ -35,10 +32,15 @@ in descending order.
 ;
 
 proc sql;
-  select player_name, avg(dribbles) as avg_db from SHOT_analytic_file
-  where short_result='made' group by player_name
+  select 
+    player_name, 
+    avg(dribbles) as avg_db 
+  from 
+    SHOT_analytic_file
+  where 
+    short_result='made' 
+  group by player_name
   order by avg_db desc;
-run;
 
 title;
 footnote;
@@ -55,10 +57,16 @@ Methodolog: Sum points for all made shorts and group by players, sort by points 
 ;
 
 proc sql;
-  select player_name, sum(pts) as points from SHOT_analytic_file
-  where shot_result='made' group by player_name
+  select 
+    player_name, 
+    sum(pts) as points 
+  from 
+    SHOT_analytic_file
+  where 
+    shot_result='made' 
+  group by player_name
   order by points desc;
-run;
+
 
 title;
 footnote;
@@ -75,10 +83,15 @@ distance in descending order.
 ;
 
 proc sql;
-  select player_name, avg(shot_dist) as avg_shot_dist from SHOT_analytic_file
-  where shot_result='made' group by player_name
+  select 
+    player_name, 
+    avg(shot_dist) as avg_shot_dist 
+  from 
+    SHOT_analytic_file
+  where 
+    shot_result='made' 
+  group by player_name
   order by avg_shot_dist desc;
-run;
 
 title;
 footnote;
