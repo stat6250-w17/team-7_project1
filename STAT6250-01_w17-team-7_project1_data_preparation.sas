@@ -57,20 +57,24 @@ data SHOT_analytic_file;
 		DRIBBLES
 		TOUCH_TIME
 		SHOT_DIST
+		PTS
+		SHOT_RESULT
 		CLOSEST_DEFENDER
 		CLOSE_DEF_DIST
 		FGM
-		player_name
+		PLAYER_NAME
 	;
 	keep
 		SHOT_CLOCK
 		DRIBBLES
 		TOUCH_TIME
 		SHOT_DIST
+		PTS
+		SHOT_RESULT
 		CLOSEST_DEFENDER
 		CLOSE_DEF_DIST
 		FGM
-		player_name
+		PLAYER_NAME
 	;
 	set SHOT_raw;
 run;
