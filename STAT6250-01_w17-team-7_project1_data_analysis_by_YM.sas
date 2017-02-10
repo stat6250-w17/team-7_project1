@@ -38,7 +38,7 @@ proc sql;
   from 
     SHOT_analytic_file
   where 
-    short_result='made' 
+    shot_result='made' 
   group by player_name
   order by avg_db desc;
 
