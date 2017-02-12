@@ -2,18 +2,20 @@
 **************** 80-character banner for column width reference ***************;
 * (set window width to banner width to calibrate line length to 80 characters *;
 *******************************************************************************;
-
+*IL: adding line breaks between paragraphs in comment blocks;
 *
 This file uses the following analytic dataset to address several research
 questions regarding NBA shooters and defenders
+
 Dataset Name: SHOT_analytic_file created in external file
 STAT6250-01_w17-team-7_project1_data_preparation.sas, which is assumed to be
 in the same directory as this file
+
 See included file for dataset properties
 ;
 
 * environmental setup;
-
+*IL: be careful for typos;
 * set relative file import path to current directory (using standard SAS trick;
 X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPATH))-%length(%sysget(SAS_EXECFILENAME))))""";
 
@@ -25,13 +27,13 @@ title1 'Research Question 1: Which player takes the most dribbles before making 
 title2 'Rationale: would like to see which player holds the ball longest and makes successful shots.';
 footnote1 'I used proc sql in SAS to select playername and average of dribbles sorted in descending';
 footnote2 'The first observation in the result gives the top player for highest average dribbles';
-
+*IL: wrap comments at 80 characters;
 *
 Methodolgy: Take average dribbles for 'made' shots by each player and sort by the average dribbles
 in descending order.
 ;
-
-proc sql;
+*IL: consider limiting the number of rows in output;
+proc sql outobs=1;
   select 
     player_name, 
     avg(dribbles) as avg_db 
@@ -41,7 +43,7 @@ proc sql;
     shot_result='made' 
   group by player_name
   order by avg_db desc;
-
+*IL: missing a quit statement;
 title;
 footnote;
 
@@ -66,7 +68,7 @@ proc sql;
     shot_result='made' 
   group by player_name
   order by points desc;
-
+*IL: missing a quit statement;
 
 title;
 footnote;
@@ -92,7 +94,7 @@ proc sql;
     shot_result='made' 
   group by player_name
   order by avg_shot_dist desc;
-
+*IL: missing a quit statement;
 title;
 footnote;
 
