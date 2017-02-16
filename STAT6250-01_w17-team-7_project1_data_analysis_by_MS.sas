@@ -33,10 +33,9 @@ Note: See Chapter 2, and 3 for Proc, and Proc mean commands.
 ;
 
 proc means data=SHOT_analytic_file noprint;
-var GAME_CLOCK;
-class player_name;
-output out= avg_t_bwn_shots_for_each_player mean= avg_t;
-
+	var GAME_CLOCK;
+	class player_name;
+	output out= avg_t_bwn_shots_for_each_player mean= avg_t;
 run;
 
 proc sort data=avg_t_bwn_shots_for_each_player;
@@ -58,9 +57,8 @@ footnote2 'total number of shots for each player is displayed.';
 footnote3 'result can be compared amongst all players.';
 
 *
-Methodology: Take the sum of shots for each player
-compare this value between all the players. 
-Note: See Chapter 2, and 3 for Proc, and Proc mean commands. 
+Methodology: Take the sum of shots for each player compare this value between all the players 
+Note: See Chapter 2, and 3 for Proc, and Proc mean commands
 ;
 
 proc means data=SHOT_analytic_file noprint;
