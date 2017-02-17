@@ -2,13 +2,15 @@
 **************** 80-character banner for column width reference ***************;
 * (set window width to banner width to calibrate line length to 80 characters *;
 *******************************************************************************;
-
+*IL: use line breaks to create paragraphs in comment blocks;
 *
 This file uses the following analytic dataset to address several research
 questions regarding NBA shooters and defenders
+
 Dataset Name: SHOT_analytic_file created in external file
 STAT6250-01_w17-team-7_project1_data_preparation.sas, which is assumed to be
 in the same directory as this file
+
 See included file for dataset properties
 ;
 
@@ -20,8 +22,12 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 * load external file that generates analytic dataset;
 %include '.\STAT6250-01_w17-team-7_project1_data_preparation.sas';
 
+*IL: be careful w/ delimiters for strings;
+*IL: expand research question to provide more context;
 title1 'Research question: What is the average time between shots for each player?';
-title2 'Rationale: It'd be interesting to see what is the avarage time between shots for each player.';
+*IL: consider being less informal in rationales;
+title2 "Rationale: It'd be interesting to see what is the avarage time between shots for each player.";
+*IL: consider leaving out methodology, and instead focus on leading the reader through the output;
 footnote1 'proc mean is used to calculate the mean for GAME_CLOCK';
 footnote2 'the end result is calculated based on the entire data set.';
 footnote3 'the avg_t can be compared to any single GAME_CLOCK data point seperatly.';
@@ -33,9 +39,9 @@ Note: See Chapter 2, and 3 for Proc, and Proc mean commands.
 ;
 
 proc means data=SHOT_analytic_file noprint;
-	var GAME_CLOCK;
-	class player_name;
-	output out= avg_t_bwn_shots_for_each_player mean= avg_t;
+    var GAME_CLOCK;
+    class player_name;
+    output out= avg_t_bwn_shots_for_each_player mean= avg_t;
 run;
 
 proc sort data=avg_t_bwn_shots_for_each_player;
@@ -51,7 +57,7 @@ title;
 footnote;
 
 title1 'Research question: What is the average shots per game for each player?';
-title2 'Rationale:I'd like to review performance of a player based on their shots per game';
+title2 "Rationale:I'd like to review performance of a player based on their shots per game";
 footnote1 'proc mean is used to calculate the mean for SHOT_RESULT.';
 footnote2 'total number of shots for each player is displayed.';
 footnote3 'result can be compared amongst all players.';
@@ -60,7 +66,8 @@ footnote3 'result can be compared amongst all players.';
 Methodology: Take the sum of shots for each player compare this value between all the players 
 Note: See Chapter 2, and 3 for Proc, and Proc mean commands
 ;
-
+*IL: be careful with variable types;
+*IL: be careful with indentation;
 proc means data=SHOT_analytic_file noprint;
 var SHOT_RESULT;
 class player_name;
