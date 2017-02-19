@@ -63,6 +63,8 @@ data SHOT_analytic_file;
 		CLOSE_DEF_DIST
 		FGM
 		PLAYER_NAME
+		GAME_CLOCK
+		PTS_TYPE
 	;
 	keep
 		SHOT_CLOCK
@@ -75,9 +77,8 @@ data SHOT_analytic_file;
 		CLOSE_DEF_DIST
 		FGM
 		PLAYER_NAME
+		GAME_CLOCK
+		PTS_TYPE
 	;
 	set SHOT_raw;
 run;
-
-
-
