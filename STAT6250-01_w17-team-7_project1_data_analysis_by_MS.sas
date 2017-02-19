@@ -35,18 +35,12 @@ Note: See Chapter 2, and 3 for Proc, and Proc mean commands.
 ;
 
 proc means data=SHOT_analytic_file noprint;
-    var GAME_CLOCK;
+    var SHOT_CLOCK;
     class player_name;
-    output out= avg_t_bwn_shots_for_each_player mean= avg_t;
-run;
-
-proc sort data=avg_t_bwn_shots_for_each_player;
-    by descending avg_t;
+    output out= avg_t_bwn_shots_for_each_player;
 run;
   
-proc print noobs data=avg_t_bwn_shots_for_each_player(obs=1);
-    id player_name;
-    var avg_t;
+proc print noobs data=avg_t_bwn_shots_for_each_player(obs=5);
 run;
  
 title;
@@ -67,18 +61,12 @@ Note: See Chapter 2, and 3 for Proc, and Proc mean commands
 proc means data=SHOT_analytic_file noprint;
 	var PTS_TYPE;
 	class player_name;
-	output out= sum_of_points_of_each_player mean= sum_p;
+	output out= sum_of_points_of_each_player;
 
-run;
-
-proc sort data=sum_of_points_of_each_player;
-    by descending sum_p;
 run;
   
-proc print noobs data=sum_of_points_of_each_player(obs=1);
-    id player_name;
-    var sum_p;
- run;
+proc print noobs data=sum_of_points_of_each_player(obs=5);
+run;
  
 title;
 footnote;
@@ -96,16 +84,11 @@ Note: See Chapter 2, and 3 for Proc, and Proc mean commands.
 proc means data=SHOT_analytic_file noprint;
 	var DRIBBLES;
 	class player_name;
-	output out= avg_of_dribbles_for_each_player mean= avg_d;
-run;
-proc sort data= avg_of_dribbles_for_each_player;
-    by descending avg_d;
+	output out= avg_of_dribbles_for_each_player;
 run;
   
-proc print noobs data= avg_of_dribbles_for_each_player(obs=1);
-    id player_name;
-    var avg_d;
- run;
+proc print noobs data= avg_of_dribbles_for_each_player(obs=5);
+run;
  
 title;
 footnote;
